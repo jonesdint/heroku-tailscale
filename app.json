@@ -5,23 +5,18 @@
     "tailscale"
   ],
   "env": {
-    "UUID": {
-      "description": "VLESS UUID",
-      "value": "86936e61655a"
+    "TAILSCALE_ADVERTISE_EXIT_NODES": {
+      "description": "TAILSCALE_ADVERTISE_EXIT_NODES",
+      "value": "true"
     },
-    "VL": {
-      "description": "VL path",
+    "TAILSCALE_AUTH_KEY": {
+      "description": "TAILSCALE_AUTH_KEY",
       "value": "/app/heroku1111s"
     },
-    "VM": {
-      "description": "VM path",
-      "value": "/app/hero1111"
-    },
-    "TR": {
-      "description": "TR path",
-      "value": "/app/hero1111gff"
-    }        
-    
+    "TAILSCALE_HOSTNAME": {
+      "description": "TAILSCALE_HOSTNAME",
+      "value": "heroku"
+    }
     
     
   },

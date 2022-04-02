@@ -1,7 +1,7 @@
 #!/bin/sh
 
 /app/tailscaled --tun=userspace-networking --socks5-server=localhost:1055 &
-until /app/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app --advertise-exit-node
+until /app/tailscale up --authkey=${TAILSCALE_AUTH_KEY} --hostname=heroku-app --advertise-exit-node
 do
     sleep 2
 done

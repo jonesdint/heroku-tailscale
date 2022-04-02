@@ -7,7 +7,7 @@ COPY . ./
 FROM alpine:latest as tailscale
 WORKDIR /app
 COPY . ./
-ENV TSFILE=tailscale_1.18.2_amd64.tgz
+ENV TSFILE=tailscale_1.12.3_amd64.tgz
 RUN wget https://pkgs.tailscale.com/stable/${TSFILE} && \
   tar xzf ${TSFILE} --strip-components=1
 COPY . ./
@@ -17,13 +17,11 @@ FROM alpine:latest
 RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
 
 # Copy binary to production image
-COPY --from=builder /entrypoint /entrypoint
+COPY --from=builder /app/start.sh /app/start.sh
 COPY --from=tailscale /app/tailscaled /app/tailscaled
 COPY --from=tailscale /app/tailscale /app/tailscale
 RUN mkdir -p /var/run/tailscale /var/cache/tailscale /var/lib/tailscale
-RUN chmod +x /entrypoint
+RUN chmod +x /app/start.sh
 
 # Run on container startup.
-CMD ["/entrypoint"]
-
-#ENTRYPOINT ["/usr/local/bin/entrypoint"]
+CMD ["/app/start.sh"]

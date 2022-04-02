@@ -1,15 +1,29 @@
-FROM alpine:3.15
+FROM golang:1.16.2-alpine3.13 as builder
+WORKDIR /app
+COPY . ./
+# This is where one could build the application code as well.
 
-ARG TARGETARCH
-ARG VERSION=1.18.2
 
-RUN \
-  apk add --no-cache iptables iproute2 ca-certificates bash \
-  && apk add --no-cache --virtual=.install-deps curl tar \
-  && curl -sL "https://pkgs.tailscale.com/stable/tailscale_${VERSION}_${TARGETARCH}.tgz" \
-  | tar -zxf - -C /usr/local/bin --strip=1 tailscale_${VERSION}_${TARGETARCH}/tailscaled tailscale_${VERSION}_${TARGETARCH}/tailscale \
-  && apk del .install-deps
+FROM alpine:latest as tailscale
+WORKDIR /app
+COPY . ./
+ENV TSFILE=tailscale_1.18.2_amd64.tgz
+RUN wget https://pkgs.tailscale.com/stable/${TSFILE} && \
+  tar xzf ${TSFILE} --strip-components=1
+COPY . ./
 
-COPY entrypoint /usr/local/bin/entrypoint
 
-ENTRYPOINT ["/usr/local/bin/entrypoint"]
+FROM alpine:latest
+RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
+
+# Copy binary to production image
+COPY --from=builder /app/start.sh /app/start.sh
+COPY --from=tailscale /app/tailscaled /app/tailscaled
+COPY --from=tailscale /app/tailscale /app/tailscale
+RUN mkdir -p /var/run/tailscale /var/cache/tailscale /var/lib/tailscale
+RUN chmod +x /entrypoint
+
+# Run on container startup.
+CMD ["/entrypoint"]
+
+#ENTRYPOINT ["/usr/local/bin/entrypoint"]

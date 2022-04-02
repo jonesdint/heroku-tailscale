@@ -1,0 +1,31 @@
+{
+  "name": "tailscale docker",
+  "description": "Deploy tailscale on Heroku.",
+  "keywords": [
+    "tailscale"
+  ],
+  "env": {
+    "UUID": {
+      "description": "VLESS UUID",
+      "value": "86936e61655a"
+    },
+    "VL": {
+      "description": "VL path",
+      "value": "/app/heroku1111s"
+    },
+    "VM": {
+      "description": "VM path",
+      "value": "/app/hero1111"
+    },
+    "TR": {
+      "description": "TR path",
+      "value": "/app/hero1111gff"
+    }        
+    
+    
+    
+  },
+  "website": "https://github.com/kongmadai/",
+  "repository": "https://github.com/kongmadai/docker-tailscale",
+  "stack": "container"
+}

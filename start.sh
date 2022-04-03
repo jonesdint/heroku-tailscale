@@ -1,5 +1,10 @@
 #!/bin/sh
 
+
+# refer to https://tailscale.com/kb/1107/heroku/
+
+
+
 #/app/tailscaled --tun=userspace-networking --socks5-server=localhost:1055 & \
 #/app/tailscale down & \
 #/app/tailscale up --authkey=${TAILSCALE_AUTH_KEY} --hostname=heroku-app --advertise-exit-node & \

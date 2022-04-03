@@ -16,8 +16,12 @@ do
     sleep 30
 done
 
-#echo Tailscale started
+echo Tailscale started
 
 ALL_PROXY=socks5://localhost:1055/
 
+sleep infinity
+
 #while true; do foo; sleep 100; done
+
+#https://forum.tailscale.com/t/create-exit-node-on-railway-app/1837/4

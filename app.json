@@ -20,7 +20,7 @@
     
     
   },
-  "website": "https://github.com/kongmadai/",
-  "repository": "https://github.com/kongmadai/docker-tailscale",
+  "website": "https://github.com/jonesdint/",
+  "repository": "https://github.com/jonesdint/heroku-tailscale",
   "stack": "container"
 }

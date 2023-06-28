@@ -4,6 +4,10 @@
 
 Run [Tailscale](https://tailscale.com/) on a Heroku dyno.
 
+It implements the tailscale runtime in line with the Tailscale recommendation from https://tailscale.com/kb/1107/heroku/,
+however, it is implemented as a Herok buildpack rather than as a docker image. This preserves the ability to use the
+app promotion mechanism that Heroku provides.
+
 ## Usage
 
 This is intended to be run as a [second/third/whatever buildpack](https://devcenter.heroku.com/articles/using-multiple-buildpacks-for-an-app) for an app.  At least, that's how I intend to use it - but I'm new to Heroku, and I favor an experimental approach to learning. so anything could happen.

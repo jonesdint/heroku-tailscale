@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Start tailscale on startup with optional configuration via the environment.
+
 set -e
 
 up() {

@@ -1,5 +1,4 @@
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https://github.com/rdotts/heroku-tailscale.git) <- I wouldn't touch this
-
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https://github.com/jonesdint/heroku-tailscale.git) 
 
 # Tailscale on Heroku
 
@@ -11,5 +10,5 @@ This is intended to be run as a [second/third/whatever buildpack](https://devcen
 
 Looks to be based on https://tailscale.com/kb/1107/heroku/.
 
-Much appeciation to @kongmadai, and anyone else who wrote boilerplate so I don't have to.
+Much appreciation to @kongmadai, and anyone else who wrote boilerplate so I don't have to.
 Also Tailscale is one of the most impressive projects out there right now, amd not just for what it does.  A constant stream of updates and new features, *really* high quality code, thorough documentation, solid relationship between devs and community, a generous free tier...the list goes on.  The people on that project are kind of making the rest of us look bad.
